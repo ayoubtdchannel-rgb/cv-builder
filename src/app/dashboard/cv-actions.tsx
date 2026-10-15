@@ -15,7 +15,8 @@ export function NewCvButton() {
       router.push(`/cv/${id}`);
     } else {
       setBusy(false);
-      alert("Couldn't create a CV. Please try again.");
+      const { error } = await res.json().catch(() => ({ error: `HTTP ${res.status}` }));
+      alert(`Couldn't create a CV: ${error ?? `HTTP ${res.status}`}`);
     }
   }
 
