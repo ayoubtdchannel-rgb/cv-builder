@@ -111,14 +111,14 @@ export function InterviewStep({ cv, setCv, next }: StepProps) {
           </div>
         ))}
         {done && !streaming && (
-          <div className="rounded-xl bg-green-50 p-4 text-sm text-good">
+          <div className="rounded-xl bg-good/15 p-4 text-sm text-good">
             ✓ The interviewer has what it needs. Continue to upload your diplomas and photo.
           </div>
         )}
         <div ref={bottom} />
       </div>
 
-      {error && <p className="px-5 pb-2 text-sm text-red-600">{error}</p>}
+      {error && <p className="px-5 pb-2 text-sm text-danger">{error}</p>}
       <form onSubmit={send} className="flex items-end gap-2 border-t border-line p-3">
         <textarea
           rows={2}

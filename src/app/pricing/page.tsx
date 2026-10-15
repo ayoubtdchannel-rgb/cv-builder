@@ -21,17 +21,17 @@ export default async function PricingPage({ searchParams }: PageProps<"/pricing"
   return (
     <>
       <SiteHeader />
-      <main className="flex-1 bg-paper">
+      <main className="flex-1">
         <div className="mx-auto max-w-4xl px-4 py-16">
           <h1 className="text-center font-serif text-4xl font-semibold">Simple pricing</h1>
           <p className="mt-3 text-center text-muted">Start free. Upgrade only when you&apos;re ready to send your CV.</p>
           {status === "success" && (
-            <p className="mx-auto mt-6 max-w-md rounded-xl bg-green-50 p-4 text-center text-sm text-good">
+            <p className="mx-auto mt-6 max-w-md rounded-xl bg-good/15 p-4 text-center text-sm text-good">
               Payment received. Pro is being activated – it can take a few seconds to show.
             </p>
           )}
           {status === "cancelled" && (
-            <p className="mx-auto mt-6 max-w-md rounded-xl bg-amber-50 p-4 text-center text-sm text-warn">
+            <p className="mx-auto mt-6 max-w-md rounded-xl bg-warn/15 p-4 text-center text-sm text-warn">
               Checkout cancelled. You haven&apos;t been charged.
             </p>
           )}
@@ -56,7 +56,7 @@ export default async function PricingPage({ searchParams }: PageProps<"/pricing"
               </p>
               <Features items={PRO} />
               {pro ? (
-                <p className="mt-8 rounded-lg bg-green-50 p-3 text-center text-sm font-medium text-good">
+                <p className="mt-8 rounded-lg bg-good/15 p-3 text-center text-sm font-medium text-good">
                   You&apos;re Pro until {new Date(profile!.pro_until!).toLocaleDateString()}
                 </p>
               ) : data.user ? (

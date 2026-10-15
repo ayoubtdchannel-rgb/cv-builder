@@ -26,7 +26,7 @@ export default async function DashboardPage() {
   return (
     <>
       <SiteHeader />
-      <main className="flex-1 bg-paper">
+      <main className="flex-1">
         <div className="mx-auto max-w-6xl px-4 py-10">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -65,17 +65,17 @@ export default async function DashboardPage() {
                 return (
                   <li key={cv.id} className="card flex flex-col p-5">
                     <Link href={`/cv/${cv.id}`} className="flex-1">
-                      <p className="font-semibold leading-snug hover:text-brand">{cv.title}</p>
+                      <p className="font-semibold leading-snug hover:text-indigo-300">{cv.title}</p>
                       <p className="mt-1 text-sm text-muted">{cv.target_role || "No target role yet"}</p>
                     </Link>
                     <div className="mt-5 flex items-center justify-between text-xs text-muted">
                       <span>
                         {cv.generated_at ? (
-                          <span className="rounded-full bg-green-50 px-2 py-1 font-medium text-good">
+                          <span className="rounded-full bg-good/15 px-2 py-1 font-medium text-good">
                             Generated{typeof score === "number" ? ` · ATS ${Math.round(score)}` : ""}
                           </span>
                         ) : (
-                          <span className="rounded-full bg-amber-50 px-2 py-1 font-medium text-warn">Draft</span>
+                          <span className="rounded-full bg-warn/15 px-2 py-1 font-medium text-warn">Draft</span>
                         )}
                       </span>
                       <span className="flex items-center gap-1">

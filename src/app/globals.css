@@ -1,46 +1,84 @@
 @import "tailwindcss";
 
+/* Glass theme: frosted translucent panels over a deep, softly lit gradient. */
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-serif: var(--font-serif-display);
-  --color-ink: #0f172a;
-  --color-muted: #64748b;
-  --color-line: #e2e8f0;
-  --color-paper: #f8fafc;
-  --color-brand: #1d4ed8;
-  --color-brand-dark: #1e3a8a;
-  --color-brand-soft: #eff6ff;
-  --color-good: #15803d;
-  --color-warn: #b45309;
+  --color-ink: #f1f5ff;
+  --color-muted: #a9b4d0;
+  --color-line: rgb(255 255 255 / 0.14);
+  --color-paper: rgb(255 255 255 / 0.06);
+  --color-brand: #5b6cff;
+  --color-brand-dark: #4453f0;
+  --color-brand-soft: rgb(129 140 248 / 0.16);
+  --color-good: #6ee7b7;
+  --color-warn: #fcd34d;
+  --color-danger: #fca5a5;
+  --color-night: #0b1028;
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 body {
-  background: #ffffff;
+  color: var(--color-ink);
+  background-color: #070b1f;
+  background-image:
+    radial-gradient(60rem 40rem at 10% -10%, rgb(91 108 255 / 0.35), transparent 60%),
+    radial-gradient(50rem 35rem at 110% 10%, rgb(168 85 247 / 0.28), transparent 60%),
+    radial-gradient(45rem 35rem at 50% 120%, rgb(20 184 166 / 0.22), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Native dropdown lists don't inherit the glass background. */
+select option {
+  background: var(--color-night);
   color: var(--color-ink);
 }
 
+/* Slowly drifting light orbs behind the glass (see layout.tsx). */
+.orbs span {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+  animation: drift 26s ease-in-out infinite alternate;
+}
+.orbs span:nth-child(1) { width: 28rem; height: 28rem; left: -6rem; top: 20%; background: #4f46e5; }
+.orbs span:nth-child(2) { width: 24rem; height: 24rem; right: -4rem; top: 45%; background: #a21caf; animation-delay: -9s; }
+.orbs span:nth-child(3) { width: 22rem; height: 22rem; left: 35%; bottom: -8rem; background: #0d9488; animation-delay: -17s; }
+
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(4rem, -3rem, 0) scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbs span { animation: none; }
+}
+
+@utility glass {
+  @apply border border-white/15 bg-white/[0.07] shadow-[0_8px_32px_rgb(0_0_0/0.35),inset_0_1px_0_rgb(255_255_255/0.12)] backdrop-blur-xl;
+}
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50;
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50;
 }
 @utility btn-primary {
-  @apply btn bg-brand text-white shadow-sm hover:bg-brand-dark;
+  @apply btn bg-gradient-to-br from-brand to-violet-500 text-white shadow-[0_8px_24px_rgb(91_108_255/0.45),inset_0_1px_0_rgb(255_255_255/0.25)] hover:brightness-110;
 }
 @utility btn-secondary {
-  @apply btn border border-line bg-white text-ink hover:bg-paper;
+  @apply btn border border-white/20 bg-white/10 text-ink backdrop-blur-md hover:bg-white/15;
 }
 @utility btn-ghost {
-  @apply btn text-muted hover:bg-paper hover:text-ink;
+  @apply btn text-muted hover:bg-white/10 hover:text-ink;
 }
 @utility input {
-  @apply w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-4 focus:ring-brand/10;
+  @apply w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-ink outline-none backdrop-blur-md transition placeholder:text-white/35 focus:border-brand focus:bg-white/10 focus:ring-4 focus:ring-brand/25;
 }
 @utility label {
   @apply mb-1.5 block text-sm font-medium text-ink;
 }
 @utility card {
-  @apply rounded-2xl border border-line bg-white shadow-sm;
+  @apply glass rounded-2xl;
 }

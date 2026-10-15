@@ -49,8 +49,8 @@ export function CvEditor({
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 sm:items-center sm:p-6">
-      <div className="flex max-h-[95dvh] w-full max-w-3xl flex-col rounded-t-2xl bg-white shadow-2xl sm:rounded-2xl">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-sm sm:items-center sm:p-6">
+      <div className="flex max-h-[95dvh] w-full max-w-3xl flex-col rounded-t-2xl border border-white/15 bg-night/90 shadow-2xl backdrop-blur-2xl sm:rounded-2xl">
         <div className="flex items-center justify-between border-b border-line px-5 py-4">
           <h2 className="text-lg font-semibold">Edit CV text</h2>
           <button onClick={onCancel} className="btn-ghost px-2" aria-label="Close">
@@ -62,7 +62,7 @@ export function CvEditor({
             <button
               key={id}
               onClick={() => setTab(id)}
-              className={`whitespace-nowrap rounded-lg px-3 py-1.5 text-sm ${tab === id ? "bg-brand-soft font-semibold text-brand" : "text-muted hover:bg-paper"}`}
+              className={`whitespace-nowrap rounded-lg px-3 py-1.5 text-sm ${tab === id ? "bg-brand-soft font-semibold text-indigo-200" : "text-muted hover:bg-paper"}`}
             >
               {label}
             </button>
@@ -192,7 +192,7 @@ export function CvEditor({
         </div>
 
         <div className="flex items-center justify-end gap-2 border-t border-line px-5 py-4">
-          {error && <p className="mr-auto text-sm text-red-600">{error}</p>}
+          {error && <p className="mr-auto text-sm text-danger">{error}</p>}
           <button onClick={onCancel} className="btn-ghost">
             Cancel
           </button>
@@ -287,7 +287,7 @@ function List<T>({
             <button disabled={i === items.length - 1} onClick={() => move(i, 1)} className="btn-ghost px-2 py-1">
               ↓
             </button>
-            <button onClick={() => remove(i)} className="btn-ghost px-2 py-1 hover:text-red-600">
+            <button onClick={() => remove(i)} className="btn-ghost px-2 py-1 hover:text-danger">
               Remove
             </button>
           </div>

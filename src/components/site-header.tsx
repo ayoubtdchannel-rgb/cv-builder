@@ -8,10 +8,10 @@ export async function SiteHeader() {
   const user = data.user;
 
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-white/85 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-night/40 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 font-semibold">
-          <span className="grid size-8 place-items-center rounded-lg bg-brand text-sm font-bold text-white">
+          <span className="grid size-8 place-items-center rounded-lg bg-gradient-to-br from-brand to-violet-500 text-sm font-bold text-white shadow-lg shadow-brand/40">
             {APP_NAME[0]}
           </span>
           <span className="text-lg tracking-tight">{APP_NAME}</span>

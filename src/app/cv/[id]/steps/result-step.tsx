@@ -85,7 +85,7 @@ export function ResultStep({
           <Check ok={docsCount > 0} label={`${docsCount} documents uploaded`} onFix={() => goTo(2)} optional />
           <Check ok={Boolean(cv.photo_path)} label={cv.photo_path ? "Photo added" : "No photo"} onFix={() => goTo(2)} optional />
         </ul>
-        {error && <p className="mt-6 text-sm text-red-600">{error}</p>}
+        {error && <p className="mt-6 text-sm text-danger">{error}</p>}
         <button onClick={generate} className="btn-primary mt-8 px-8 py-3 text-base">
           ✨ Generate my CV
         </button>
@@ -117,7 +117,7 @@ export function ResultStep({
           key={version}
           src={`/api/cvs/${cv.id}/pdf?v=${version}#view=FitH&toolbar=0`}
           title="CV preview"
-          className="h-[80vh] w-full bg-slate-100"
+          className="h-[80vh] w-full bg-black/20"
         />
       </section>
 
@@ -129,10 +129,10 @@ export function ResultStep({
               <div
                 className="grid size-20 place-items-center rounded-full text-2xl font-bold"
                 style={{
-                  background: `conic-gradient(${score >= 75 ? "#15803d" : score >= 55 ? "#b45309" : "#dc2626"} ${score * 3.6}deg, #e2e8f0 0)`,
+                  background: `conic-gradient(${score >= 75 ? "#34d399" : score >= 55 ? "#fbbf24" : "#f87171"} ${score * 3.6}deg, rgb(255 255 255 / 0.12) 0)`,
                 }}
               >
-                <span className="grid size-16 place-items-center rounded-full bg-white">{score}</span>
+                <span className="grid size-16 place-items-center rounded-full bg-night">{score}</span>
               </div>
               <p className="text-xs text-muted">
                 How well this CV matches {cv.target_role ? `“${cv.target_role}”` : "the target role"} for screening software
@@ -177,7 +177,7 @@ export function ResultStep({
           <button onClick={generate} className="btn-secondary w-full">
             Regenerate
           </button>
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-danger">{error}</p>}
           <p className="text-xs text-muted">Regenerating replaces any manual text edits.</p>
         </div>
       </aside>
@@ -193,7 +193,7 @@ function Check({ ok, label, onFix, optional }: { ok: boolean; label: string; onF
       <span className={ok ? "text-good" : optional ? "text-muted" : "text-warn"}>{ok ? "✓" : optional ? "○" : "!"}</span>
       <span className="flex-1">{label}</span>
       {!ok && (
-        <button onClick={onFix} className="text-xs font-medium text-brand hover:underline">
+        <button onClick={onFix} className="text-xs font-medium text-indigo-300 hover:underline">
           {optional ? "Add" : "Fix"}
         </button>
       )}

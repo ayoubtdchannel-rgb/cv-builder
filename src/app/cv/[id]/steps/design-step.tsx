@@ -34,7 +34,7 @@ export function DesignStep({ cv, save, next, back }: StepProps) {
                 <p className="mt-3 flex items-center gap-2 font-semibold">
                   {t.name}
                   {t.id === "classic" && (
-                    <span className="rounded-full bg-green-50 px-2 py-0.5 text-[11px] font-medium text-good">Best for ATS</span>
+                    <span className="rounded-full bg-good/15 px-2 py-0.5 text-[11px] font-medium text-good">Best for ATS</span>
                   )}
                 </p>
                 <p className="text-xs text-muted">{t.blurb}</p>
@@ -51,7 +51,7 @@ export function DesignStep({ cv, save, next, back }: StepProps) {
                 key={c}
                 onClick={() => void save({ accent: c })}
                 aria-label={`Accent ${c}`}
-                className={`size-9 rounded-full ring-offset-2 transition ${cv.accent === c ? "ring-2 ring-brand" : "hover:scale-110"}`}
+                className={`size-9 rounded-full border border-white/25 ring-offset-2 ring-offset-night transition ${cv.accent === c ? "ring-2 ring-white" : "hover:scale-110"}`}
                 style={{ backgroundColor: c }}
               />
             ))}

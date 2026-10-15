@@ -73,7 +73,7 @@ export function TargetStep({ cv, save, next }: StepProps) {
           onChange={(e) => setJobDescription(e.target.value)}
         />
       </div>
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-danger">{error}</p>}
       <div className="flex justify-end">
         <button className="btn-primary" disabled={busy || !role.trim()}>
           {busy ? "Saving…" : "Start the interview →"}

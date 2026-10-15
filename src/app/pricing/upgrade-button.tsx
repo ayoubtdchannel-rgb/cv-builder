@@ -24,7 +24,7 @@ export function UpgradeButton() {
       <button onClick={checkout} disabled={busy} className="btn-primary w-full">
         {busy ? "Opening checkout…" : "Upgrade to Pro"}
       </button>
-      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-2 text-sm text-danger">{error}</p>}
     </div>
   );
 }

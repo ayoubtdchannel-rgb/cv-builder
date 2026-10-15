@@ -148,7 +148,7 @@ export function DocumentsStep({
           />
         </label>
 
-        {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+        {error && <p className="mt-3 text-sm text-danger">{error}</p>}
 
         <ul className="mt-6 space-y-3">
           {reading.map((name) => (
@@ -162,7 +162,7 @@ export function DocumentsStep({
             const f = doc.extracted;
             return (
               <li key={doc.id} className="flex items-start gap-3 rounded-xl border border-line p-4 text-sm">
-                <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-brand-soft text-xs font-bold text-brand">
+                <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-brand-soft text-xs font-bold text-indigo-200">
                   {doc.mime_type === "application/pdf" ? "PDF" : "IMG"}
                 </span>
                 <div className="min-w-0 flex-1">
@@ -182,7 +182,7 @@ export function DocumentsStep({
                     </>
                   )}
                 </div>
-                <button onClick={() => removeDoc(doc.id)} className="text-xs text-muted hover:text-red-600">
+                <button onClick={() => removeDoc(doc.id)} className="text-xs text-muted hover:text-danger">
                   Remove
                 </button>
               </li>
@@ -215,7 +215,7 @@ export function DocumentsStep({
             />
           </label>
           {cv.photo_path && (
-            <button onClick={removePhoto} className="text-xs text-muted hover:text-red-600">
+            <button onClick={removePhoto} className="text-xs text-muted hover:text-danger">
               Remove photo
             </button>
           )}

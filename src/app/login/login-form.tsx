@@ -75,7 +75,7 @@ export function LoginForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {status === "error" && <p className="text-sm text-red-600">{error}</p>}
+        {status === "error" && <p className="text-sm text-danger">{error}</p>}
         <button className="btn-primary w-full py-3" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : "Email me a sign-in link"}
         </button>

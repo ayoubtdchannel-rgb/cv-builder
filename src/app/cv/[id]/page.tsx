@@ -33,7 +33,7 @@ export default async function CvPage({ params }: PageProps<"/cv/[id]">) {
   return (
     <>
       <SiteHeader />
-      <main className="flex-1 bg-paper">
+      <main className="flex-1">
         <Wizard
           userId={auth.user.id}
           pro={isPro(profile?.pro_until)}

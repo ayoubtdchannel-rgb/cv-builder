@@ -9,7 +9,7 @@ export default function LoginPage() {
   return (
     <>
       <SiteHeader />
-      <main className="flex flex-1 items-center justify-center bg-paper px-4 py-16">
+      <main className="flex flex-1 items-center justify-center px-4 py-16">
         <div className="card w-full max-w-md p-8">
           <h1 className="font-serif text-3xl font-semibold">Welcome</h1>
           <p className="mt-2 text-sm text-muted">

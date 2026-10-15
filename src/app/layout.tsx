@@ -15,7 +15,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col font-sans">{children}</body>
+      <body className="flex min-h-full flex-col font-sans">
+        <div aria-hidden className="orbs pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+          <span />
+          <span />
+          <span />
+        </div>
+        {children}
+      </body>
     </html>
   );
 }

@@ -77,13 +77,13 @@ export function Wizard({
               onClick={() => setStep(i)}
               className={`w-full min-w-28 rounded-xl border px-3 py-2.5 text-left text-xs transition ${
                 i === step
-                  ? "border-brand bg-white shadow-sm"
+                  ? "border-brand/70 bg-brand/25 shadow-lg shadow-brand/25 backdrop-blur-md"
                   : i < step
-                    ? "border-line bg-white/60 text-muted hover:bg-white"
-                    : "border-transparent text-muted hover:bg-white/60"
+                    ? "border-line bg-white/5 text-muted hover:bg-white/10"
+                    : "border-transparent text-muted hover:bg-white/5"
               }`}
             >
-              <span className={`block font-semibold ${i === step ? "text-brand" : ""}`}>Step {i + 1}</span>
+              <span className={`block font-semibold ${i === step ? "text-indigo-300" : ""}`}>Step {i + 1}</span>
               <span className={i === step ? "text-ink" : ""}>{label}</span>
             </button>
           </li>

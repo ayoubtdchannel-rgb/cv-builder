@@ -35,10 +35,10 @@ export default function Home() {
     <>
       <SiteHeader />
       <main className="flex-1">
-        <section className="relative overflow-hidden bg-gradient-to-b from-brand-soft to-white">
+        <section className="relative overflow-hidden">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:py-24 lg:grid-cols-[1.1fr_1fr]">
             <div>
-              <p className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand shadow-sm">
+              <p className="glass inline-flex rounded-full px-3 py-1 text-xs font-semibold text-indigo-200">
                 AI CV builder
               </p>
               <h1 className="mt-5 font-serif text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">
@@ -62,7 +62,7 @@ export default function Home() {
               {TEMPLATES.map((t, i) => (
                 <div
                   key={t.id}
-                  className="absolute w-[62%] overflow-hidden rounded-lg border border-line bg-white shadow-xl"
+                  className="absolute w-[62%] overflow-hidden rounded-lg border border-white/30 bg-white shadow-2xl shadow-black/50"
                   style={{ left: `${i * 19}%`, top: `${i * 9}%`, transform: `rotate(${(i - 1) * 4}deg)`, zIndex: i }}
                 >
                   <Image src={`/templates/${t.id}.png`} alt={`${t.name} CV design`} width={595} height={842} priority={i === 2} />
@@ -77,7 +77,7 @@ export default function Home() {
           <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((s, i) => (
               <li key={s.title} className="card p-6">
-                <span className="grid size-9 place-items-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span>
+                <span className="grid size-9 place-items-center rounded-full bg-gradient-to-br from-brand to-violet-500 text-sm font-bold text-white shadow-lg shadow-brand/40">{i + 1}</span>
                 <h3 className="mt-4 font-semibold">{s.title}</h3>
                 <p className="mt-2 text-sm text-muted">{s.body}</p>
               </li>
@@ -85,7 +85,7 @@ export default function Home() {
           </ol>
         </section>
 
-        <section className="bg-paper">
+        <section>
           <div className="mx-auto max-w-6xl px-4 py-20">
             <h2 className="text-center font-serif text-3xl font-semibold">Why it works</h2>
             <div className="mt-12 grid gap-6 sm:grid-cols-2">
@@ -104,7 +104,7 @@ export default function Home() {
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             {TEMPLATES.map((t) => (
               <figure key={t.id}>
-                <div className="overflow-hidden rounded-xl border border-line shadow-sm">
+                <div className="overflow-hidden rounded-xl border border-white/20 bg-white shadow-2xl shadow-black/40 ring-1 ring-white/10">
                   <Image src={`/templates/${t.id}.png`} alt={`${t.name} CV design`} width={595} height={842} />
                 </div>
                 <figcaption className="mt-3">
@@ -116,17 +116,17 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-ink text-white">
-          <div className="mx-auto flex max-w-6xl flex-col items-center px-4 py-16 text-center">
+        <section className="px-4 pb-20">
+          <div className="card mx-auto flex max-w-4xl flex-col items-center px-6 py-16 text-center">
             <h2 className="font-serif text-3xl font-semibold">Your next interview starts with a better CV.</h2>
-            <p className="mt-3 text-slate-300">Start free. Go Pro for {PRO_PRICE} when you&apos;re ready to apply.</p>
-            <Link href="/login" className="btn mt-8 bg-white px-6 py-3 text-base text-ink hover:bg-slate-100">
+            <p className="mt-3 text-muted">Start free. Go Pro for {PRO_PRICE} when you&apos;re ready to apply.</p>
+            <Link href="/login" className="btn-primary mt-8 px-6 py-3 text-base">
               Create my CV
             </Link>
           </div>
         </section>
       </main>
-      <footer className="border-t border-line py-8 text-center text-xs text-muted">
+      <footer className="border-t border-white/10 py-8 text-center text-xs text-muted">
         © {new Date().getFullYear()} {APP_NAME}
       </footer>
     </>
