@@ -9,7 +9,7 @@ People answer an AI recruiter's questions, upload their diplomas, certificates a
 | 1. Target job | Role, CV language, optional job advert | `src/app/cv/[id]/steps/target-step.tsx` |
 | 2. AI interview | Claude asks one question at a time (streamed), digging for quantified achievements, and ends the interview itself when it has enough | `src/app/api/cvs/[id]/interview`, `src/lib/ai.ts` |
 | 3. Documents & photo | Files go straight to private Supabase Storage; Claude reads each diploma/certificate (image or PDF) into structured facts. Photos are cropped square and EXIF-rotated in the browser | `src/app/api/cvs/[id]/documents`, `steps/documents-step.tsx` |
-| 4. Design | 3 templates × 6 accent colours, switchable without regenerating | `src/lib/pdf/templates.tsx` |
+| 4. Design | 5 templates (Modern, Executive, Classic, Elegant, Bold) × 8 accent colours, switchable without regenerating | `src/lib/pdf/templates.tsx`, `src/lib/pdf/kit.tsx` |
 | 5. Generate | Claude writes the CV as schema-validated JSON (structured outputs) using only facts from the interview and documents, plus an ATS score, strengths, improvements and missing keywords. Users can edit the text, then download the PDF | `src/app/api/cvs/[id]/generate`, `src/app/api/cvs/[id]/pdf` |
 
 **Plans:** Free = 3 generations/day, PDFs carry a small footer. Pro = one-time Stripe payment for a 30-day pass, no footer, higher limits. Limits live in `src/lib/account.ts`; name and price in `src/lib/brand.ts`.
@@ -48,6 +48,6 @@ Deploy to Vercel (or any Node host), set the same environment variables, and set
 
 ## Notes
 - **Honesty is enforced in the prompts:** the writer may rephrase but never invent employers, dates, degrees or numbers. Keep it that way. Invented claims get candidates rejected at interview.
-- **Template previews** in `public/templates/` come from `npm run render-samples -- <dir>` followed by `pdftoppm -png -r 72 -singlefile <dir>/<id>.pdf public/templates/<id>`.
-- **Fonts:** PDFs use the built-in Helvetica and Times, which cover Western European languages. Arabic or other non-Latin CVs need an embedded font (`Font.register`) and RTL layout work.
+- **Template previews** in `public/templates/` come from `npm run render-samples -- <dir>` followed by `pdftoppm -png -r 72 -singlefile <dir>/<id>.pdf public/templates/<id>` for each template.
+- **Fonts:** PDFs embed Inter, Playfair Display, Lora, Source Sans 3 and Poppins (OFL, in `src/lib/pdf/fonts`), trimmed to Latin and Latin Extended so Western and Central European languages render. Arabic or other non-Latin CVs need extra fonts and RTL layout work.
 - AI requests use server-side refusal fallback (`fallbacks: "default"`), so a declined request is retried on Anthropic's recommended fallback model.

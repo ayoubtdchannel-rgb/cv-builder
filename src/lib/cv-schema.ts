@@ -90,12 +90,14 @@ export type DocumentFacts = z.infer<typeof DocumentFacts>;
 export type InterviewMessage = { role: "user" | "assistant"; content: string };
 
 export const TEMPLATES = [
-  { id: "classic", name: "Classic", blurb: "Single column. The safest choice for applicant tracking systems." },
-  { id: "modern", name: "Modern", blurb: "Colour sidebar with photo. Good for creative and tech roles." },
-  { id: "elegant", name: "Elegant", blurb: "Serif headings, centred header. Suits law, finance, academia." },
+  { id: "modern", name: "Modern", blurb: "Colour sidebar with photo, skill chips and a timeline. Great for tech and business." },
+  { id: "executive", name: "Executive", blurb: "Bold header band and two columns. For managers and senior roles." },
+  { id: "classic", name: "Classic", blurb: "Clean single column. The safest choice for applicant tracking systems." },
+  { id: "elegant", name: "Elegant", blurb: "Refined serif typography. Suits law, finance, academia and hospitality." },
+  { id: "bold", name: "Bold", blurb: "Big two-tone name and a date rail. Stands out for creative and sales roles." },
 ] as const;
 export type TemplateId = (typeof TEMPLATES)[number]["id"];
 
-export const ACCENTS = ["#1f4e79", "#0f766e", "#7c2d12", "#4c1d95", "#111827", "#9f1239"] as const;
+export const ACCENTS = ["#1f4e79", "#2f5bea", "#0f766e", "#b45309", "#7c3aed", "#be123c", "#334155", "#111827"] as const;
 
 export const LANGUAGES = ["English", "French", "Spanish", "German", "Portuguese", "Italian", "Dutch"] as const;
